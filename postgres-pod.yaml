@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgress-pod
+  labels:
+    name: postgress-pod
+    app: voting-app
+spec:
+  containers:
+  - name: postgres
+    image: postgres
+    ports:
+      - containerPort: 5432
+    env: 
+      - name: POSTGRES_PASSWORD
+        value: "postgres"
+      - name: POSTGRES_USER
+        value: "postgres"
+    resources:
+      limits:
+        cpu: "1"
+        memory: "512Mi"
